@@ -7,7 +7,7 @@ This is a Rust equivalent to [FreeCodeCamp's JavaScript Algorithms and Data Stru
 First clone the repository to your desired destination:
 
 ```
-git clone git@github.com:3rfaan/rust_algorithms.git && cd rust_algorithms
+git clone git@github.com:rajeshkumarrobert/rust_algorithms.git && cd rust_algorithms
 ```
 
 Then you can run the following command while in the folder `rust_algorithms`:

@@ -6,7 +6,23 @@
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn diff_array<'a>(arr1: Vec<&'a str>, arr2: Vec<&'a str>) -> Vec<&'a str> {
-    unimplemented!()
+    let mut new_arr  = Vec::new();
+   for string in arr1{
+    new_arr.push(string);
+   }
+
+   for string in arr2{
+    if new_arr.contains(&string){
+      let index = new_arr.iter().position(|&x|x==string).unwrap();
+      new_arr.remove(index);
+    }else {
+        new_arr.push(string);
+    }
+   }
+
+   new_arr.sort_by(|a,b| a.to_lowercase().cmp(&b.to_lowercase()));
+
+   new_arr.to_vec()
 }
 
 #[cfg(test)]
