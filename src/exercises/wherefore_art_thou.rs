@@ -16,7 +16,10 @@ fn what_is_in_a_name(
     collection: Vec<HashMap<String, String>>,
     source: HashMap<String, String>,
 ) -> Vec<HashMap<String, String>> {
-    unimplemented!()
+    collection.into_iter().filter(|obj|{
+        source.iter().all(|(key,value)| obj.contains_key(key)&& obj.get(key)== Some(value))
+    })
+    .collect()
 }
 
 #[cfg(test)]

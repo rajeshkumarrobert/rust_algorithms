@@ -1,9 +1,16 @@
 // Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 
+use regex::Regex;
 #[allow(dead_code)]
 #[allow(unused_variables)]
-fn spinal_case(s: String) -> String {
-    unimplemented!()
+fn spinal_case(mut s: String) -> String {
+    let re = Regex::new(r"(?P<lower>[a-z])(?P<upper>[A-Z])").unwrap();
+
+    s=re.replace_all(&s, "${lower} ${upper}").to_string();
+
+    let re = Regex::new(r"\s|_").unwrap();
+
+    re.split(&s).collect::<Vec<&str>>().into_iter().map(|s|s.to_lowercase()).collect::<Vec<String>>().join("-")
 }
 
 #[cfg(test)]
