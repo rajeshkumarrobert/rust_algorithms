@@ -8,13 +8,29 @@
 
 // Note: Preserve the case of the first character in the original word when you are replacing it.
 // For example if you mean to replace the word Book with the word dog, it should be replaced as Dog
+use regex::Regex;
 
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn my_replace(s: &str, before: &str, after: &str) -> String {
-    unimplemented!()
+    let re = Regex::new(r"^[A-Z]").unwrap();
+    let mut after = after.to_string();
+    if re.is_match(before){
+       after = first_to_upper(&after);
+    }else if !re.is_match(before)&&re.is_match(&after) {
+        after = after.to_lowercase();
+    }
+    s.replace(before, &after)
 }
 
+fn first_to_upper(s:&str)->String{
+     let mut c = s.chars();
+
+     match c.next() {
+         None => String::new(),
+         Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+     }
+}
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -11,7 +11,11 @@
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn pair_element(s: &str) -> Vec<[char; 2]> {
-    unimplemented!()
+    let mut pairs = Vec::new();
+    for c in s.chars(){
+        pairs.push(match_base_pair(c));
+    }
+    pairs
 }
 
 // Function to return an array of 2 chars with the matching base DNA pair

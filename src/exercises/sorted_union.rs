@@ -9,7 +9,16 @@
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn unite_unique(arr: Vec<Vec<i32>>) -> Vec<i32> {
-    unimplemented!()
+    let arr:Vec<i32> = arr.into_iter().flatten().collect();
+    let mut result = Vec::new();
+
+    for number in arr{
+        if !result.contains(&number){
+            result.push(number);
+        }
+    }
+
+    result
 }
 
 #[cfg(test)]

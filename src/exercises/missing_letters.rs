@@ -5,7 +5,19 @@
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn fear_not_letter(s: &str) -> Option<char> {
-    unimplemented!()
+    let mut current_char_code = s.chars().next()? as u8;
+    let mut missing_char_code = None;
+
+    for c in s.chars(){
+        if c as u8 == current_char_code{
+            current_char_code+=1;
+        }else {
+            missing_char_code = Some(current_char_code as char);
+            break;
+        }
+    }
+
+    missing_char_code
 }
 
 #[cfg(test)]
