@@ -2,10 +2,24 @@
 // in a string to their corresponding HTML entities.
 
 // Some characters and their corresponding HTML entities
+
+const ENTITIES: [(&str,&str);5] =[
+   ("&","&amp;"),
+   ("<","&lt;"),
+   (">","&gt;"),
+   ("\"","&quot;"),
+   ("'","&apos;"),
+];
+
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn convert_html(s: &str) -> String {
-    unimplemented!()
+    let mut result = String::from(s);
+
+    for (c,e) in ENTITIES{
+       result= result.replace(c, e);
+    }
+   result
 }
 
 #[cfg(test)]

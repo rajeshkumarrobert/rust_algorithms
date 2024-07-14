@@ -7,7 +7,11 @@
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn sum_primes(num: i64) -> i64 {
-    unimplemented!()
+    (2..=num).filter(|&n| is_prime(n)).sum()
+}
+
+fn is_prime(n:i64)->bool{
+   (2..=(n as f64).sqrt() as i64).all(|i| n%i!=0 )
 }
 
 #[cfg(test)]
