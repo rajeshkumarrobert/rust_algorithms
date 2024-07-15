@@ -4,13 +4,20 @@
 // Then return the rest of the array once the condition is satisfied,
 // otherwise, arr should be returned as an empty array.
 
+use std::iter;
+
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn drop_elements<F>(arr: &mut Vec<i32>, filter: F) -> Vec<i32>
 where
     F: Fn(&i32) -> bool,
 {
-    unimplemented!()
+   for (i,value) in arr.iter().enumerate(){
+     if filter(value){
+        return arr[i..].to_vec();
+     }
+   }
+   vec![]
 }
 
 #[cfg(test)]

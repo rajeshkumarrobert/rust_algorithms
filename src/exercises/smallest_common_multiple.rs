@@ -8,8 +8,21 @@
 
 #[allow(dead_code)]
 #[allow(unused_variables)]
-fn smallest_commons(arr: [i32; 2]) -> i32 {
-    unimplemented!()
+fn smallest_commons(mut arr: [i32; 2]) -> i32 {
+    arr.sort();
+    let (start,end) = (arr[0],arr[1]);
+
+    let lcm = (start..=end).fold(start,|acc,n| (acc * n) / gcd(acc,n));
+    
+    lcm
+
+}
+
+fn gcd(a:i32,b:i32)->i32{
+  match b {
+    0=>a,
+    _=>gcd(b, a % b),
+  }
 }
 
 #[cfg(test)]

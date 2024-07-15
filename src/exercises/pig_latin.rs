@@ -11,17 +11,17 @@ use regex::Regex;
 #[allow(unused_variables)]
 fn translate_pig_latin(s: String) -> String {
     let re = Regex::new(r"^[aeiou]+").unwrap();
-    let mut Result = String::new();
+    let mut result = String::new();
 
     if re.is_match(&s){
-        Result.push_str(&s);
-        Result.push_str("way");
+        result.push_str(&s);
+        result.push_str("way");
     }else {
         let re = Regex::new(r"(?P<consonant>^[^aeiou]+)(?P<rest>\w*)").unwrap();
 
-        Result = re.replace(&s, "${rest}${consonant}ay").to_string();
+        result = re.replace(&s, "${rest}${consonant}ay").to_string();
     }
-Result
+result
 }
 
 #[cfg(test)]

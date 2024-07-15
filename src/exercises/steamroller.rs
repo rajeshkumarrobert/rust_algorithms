@@ -10,7 +10,15 @@ enum Value {
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn steamroll_array(arr: &[Value]) -> Vec<i32> {
-    unimplemented!()
+    let mut result = Vec::new();
+
+    for val in arr {
+         match val {
+             Value::Number(n) => result.push(*n),
+             Value::Array(sub_array)=> result.extend(steamroll_array(sub_array)),
+         }
+    }
+    result
 }
 
 #[cfg(test)]
