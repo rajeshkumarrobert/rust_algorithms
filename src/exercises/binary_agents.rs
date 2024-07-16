@@ -5,7 +5,13 @@
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn binary_agent(s: &str) -> String {
-    unimplemented!()
+   let mut result = String::new();
+
+   for byte in s.split(' ').map(|x| u8::from_str_radix(x, 2).unwrap()){
+    result.push(byte as char);
+   }
+
+   result
 }
 
 #[cfg(test)]
