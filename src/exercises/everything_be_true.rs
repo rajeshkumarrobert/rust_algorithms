@@ -17,7 +17,39 @@ enum Type {
 }
 
 // Methods returning value of certain field
-impl Type {}
+impl Type {
+    fn name (&self)-> &str{
+        match self {
+            Type::Person(pers)=> &pers.name,
+            _ => panic!("Not a Valid Type"),
+        }
+    }
+     fn role (&self) -> &str {
+        match self {
+            Type::Person(pers) => &pers.role,
+            _ => panic!("Not a Valid Type"),
+        }
+     }
+     fn is_bot(&self) -> bool {
+        match self{
+            Type::Person(pers) => pers.is_bot,
+            _ => panic!("Not a Valid Type"),
+        }
+     }
+     fn number(&self) -> i32 {
+        match self {
+            Type::Pokemon(pkmn) => pkmn.number,
+             _ => panic!("Not a Valid Type"),
+        }
+     }
+
+     fn caught(&self) -> i32{
+        match self {
+           Type::Pokemon(pkmn) => pkmn.caught, 
+            _ => panic!("Not a Valid Type"),
+        }
+     }
+}
 
 #[derive(PartialEq)]
 #[allow(unused_variables)]
@@ -38,7 +70,14 @@ struct Pokemon {
 #[allow(dead_code)]
 #[allow(unused_variables)]
 fn truth_check(collection: Vec<Type>, pre: &str) -> bool {
-    unimplemented!()
+    collection.iter().all(|p| match pre {
+        "name"=>p.name() != "",
+        "role" => p.role() != "",
+        "is_bot" => p.is_bot() != false,
+        "number" => p.number() != 0,
+        "caught" => p.caught() != 0,
+        _ => panic!("No field is found for {pre}"),
+    })
 }
 
 #[cfg(test)]
